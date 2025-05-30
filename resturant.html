@@ -1,0 +1,507 @@
+<!-- HTML Structure for Restaurant Ordering Website -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Ordering</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+            transition: background 0.3s, color 0.3s;
+        }
+        /* Make header sticky */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    /* Your existing header styles */
+    background-color: #343a40;,
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+        /* Dark mode styling */
+        .dark-mode {
+            background-color: #343a40;
+            color: white;
+        }
+        /* Header styling */
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+        /* Logo styling */
+        header img {
+            width: 80px;
+            margin-right: 15px;
+        }
+        /* Navigation bar */
+        nav {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: auto;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: white;
+        }
+        /* Button styling */
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        /* FAQ and Gallery styling styling*/
+        .about, .faq, .gallery {
+            padding: 20px;
+            background: #e9ecef;
+            border-radius: 5px;
+            text-align: center;
+            margin: 20px;
+        }
+        .about a, .faq a {
+            display: block;
+            margin: 10px 0;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .about a:hover, .faq a:hover {
+            text-decoration: underline;
+        }
+        .faq-item {
+            margin: 10px 0;
+        }
+        .faq-question {
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .faq-answer {
+            display: none;
+            margin-top: 5px;
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+        /* about styling*/
+        .about {
+            padding: 20px;
+            background: #e9ecef;
+            border-radius: 5px;
+            text-align: center;
+            margin: 20px;
+        }
+        .about a {
+            display: block;
+            margin: 10px 0;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .about a:hover {
+            text-decoration: underline;
+        }
+        /* Search bar styling */
+        .search-bar {
+            margin: 20px;
+            padding: 10px;
+            width: 50%;
+            font-size: 16px;
+        }
+        /* Menu layout */
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: start;
+        }
+         /* Individual menu item styling */
+        .menu-item {
+            width: 25%;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        /* Menu item images */
+        .menu-item img {
+            max-width: 60%;
+            height: auto;
+        }
+        /* Shopping cart section */
+        .cart {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e9ecef;
+            border-radius: 5px;
+        }
+        /* Individual cart item */
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            border-bottom: 1px solid #ccc;
+        }
+         /* Discount input and messages */  
+        .discount {
+            margin-top: 10px;
+        }
+        /* Payment section (hidden by default) */
+        #payment {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background: #e9ecef;
+            border-radius: 5px;
+        }
+        
+        /* Customer Comments Section */
+        #comments-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.comment {
+    background: white;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #ddd;
+}
+
+.delete-btn {
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background: darkred;
+}
+
+input, textarea {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background: green;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: darkgreen;
+}
+#delivery {
+            background-color: #e9ecef;
+            padding: 30px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .delivery-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .delivery-form label, .delivery-form select, .delivery-form button {
+            margin: 10px 0;
+        }
+        .delivery-form select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .delivery-form button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #343a40;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delivery-form button:hover {
+            background-color: #495057;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <!-- Restaurant logo -->
+    <img src="image/logo.jpeg" alt="Restaurant Logo">
+    <h1>Welcome to Our Restaurant</h1>
+    <!-- Navigation bar -->
+    <nav>
+        <a href="#Home">Home</a>
+        <a href="#cart">Cart <span id="cart-badge" class="cart-badge"></span></a>
+        <a href="#order">Order</a>
+        <a href="#about">About Us</a>
+        <a href="#faq">FAQ</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <!-- Dark Mode Toggle Button -->
+    <button id="darkModeToggle" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+</header>
+
+<!-- Live Search Bar -->
+<input type="text" id="search" class="search-bar" placeholder="Search for food or drinks..." onkeyup="searchMenu()">
+
+<!-- Delivery Section -->
+<section id="delivery">
+    <h2>Choose Your Delivery Method</h2>
+    <form class="delivery-form">
+        <label for="vehicle">Select a vehicle for delivery:</label>
+        <select id="vehicle" name="vehicle">
+            <option value="motorcycle">Motorcycle</option>
+            <option value="car">Car</option>
+        </select>
+        <button type="submit">Confirm Delivery</button>
+    </form>
+</section>
+
+<!-- order section-->
+<section id="order">
+    <h2>Place Your Order</h2>
+    <p>Craving something delicious? Order your favorite meals from our menu with just a few clicks! 🍽️</p>
+    <p>We offer a seamless ordering experience with fresh, high-quality dishes prepared just for you. 🥗🍕🍜</p>
+    <p>Simply select your meal, add it to the cart, and proceed to checkout. Your food will be on its way in no time! 🚀</p>
+    <p>Enjoy a hassle-free dining experience from the comfort of your home or office. Place your order now! 📦</p>
+</section>
+
+<!-- Food Menu Section -->
+<section id="Home">
+    <h2>Food Menu</h2>
+    <div class="menu">
+        <div class="menu-item">
+            <h4>Burger - $10</h4>
+            <img src="image/burger.jpeg" alt="Burger">
+            <input type="number" id="quantity-Burger" min="1" value="1">
+    <button onclick="addToCart('Burger', 10)">Add to Cart</button>
+    <button class="favorite-btn" data-item="Burger" onclick="toggleFavorite('Burger')">🤍</button>
+        </div>
+        <div class="menu-item">
+            <h4>Pizza - $15</h4>
+            <img src="image/pizza.jpeg" alt="Pizza">
+            <input type="number" id="quantity-Pizza" min="1" value="1">
+            <button onclick="addToCart('Pizza', 10)">Add to Cart</button>
+            <button class="favorite-btn" data-item="Pizza" onclick="toggleFavorite('Pizza')">🤍</button>
+        </div>
+        <div class="menu-item">
+            <h4>laws - $15</h4>
+            <img src="image/digir.jpg" alt="Pizza">
+            <input type="number" id="quantity-laws" min="1" value="1">
+            <button onclick="addToCart('laws', 10)">Add to Cart</button>
+            <button class="favorite-btn" data-item="laws" onclick="toggleFavorite('laws')">🤍</button>
+        </div>
+        <div class="menu-item">
+            <h4>Pasta - $12</h4>
+            <img src="image/pasta.jpeg" alt="Pasta">
+            <input type="number" id="quantity-Pasta" min="1" value="1">
+            <button onclick="addToCart('Pasta', 10)">Add to Cart</button>
+            <button class="favorite-btn" data-item="Pasta" onclick="toggleFavorite('Pasta')">🤍</button>
+        </div>
+        <div class="menu-item">
+            <h4>Salad - $8</h4>
+            <img src="image/salad.jpeg" alt="Salad">
+            <input type="number" id="quantity-Salad" min="1" value="1">
+            <button onclick="addToCart('Salad', 10)">Add to Cart</button>
+            <button class="favorite-btn" data-item="Salad" onclick="toggleFavorite('Salad')">🤍</button>
+        </div>
+        <div class="menu-item">
+            <h4>Grilled Chicken - $18</h4>
+            <img src="image/chicken.jpeg" alt="Grilled Chicken">
+            <input type="number" id="quantity-Grilled Chicken" min="1" value="1">
+            <button onclick="addToCart('Grilled Chicken', 10)">Add to Cart</button>
+            <button class="favorite-btn" data-item="Grilled Chicken" onclick="toggleFavorite('Grilled Chicken')">🤍</button>
+        </div>
+    </div>
+
+    <h2>Drink Menu</h2>
+    <div class="menu">
+        <div class="menu-item">
+            <h4>Orange Juice - $5</h4>
+            <img src="image/orange.jpeg" alt="Orange Juice">
+            <input type="number" id="quantity-Orange Juice" min="1" value="1">
+            <button onclick="addToCart('Orange Juice', 10)">Add to Cart</button>
+            <button class="favorite-btn" data-item="Orange Juice" onclick="toggleFavorite('Orange Juice')">🤍</button>
+        </div>
+        <div class="menu-item">
+            <h4>Watermelon Juice - $6</h4>
+            <img src="image/watermelon.jpeg" alt="Watermelon Juice">
+            <input type="number" id="quantity-Watermelon Juice" min="1" value="1">
+            <button onclick="addToCart('Watermelon Juice', 10)">Add to Cart</button>
+            <button class="favorite-btn" data-item="Watermelon Juice" onclick="toggleFavorite('Watermelon Juice')">🤍</button>
+        </div>
+        <div class="menu-item">
+            <h4>Starbucks - $4</h4>
+            <img src="image/startbugs.jpeg" alt="Starbucks">
+            <input type="number" id="quantity-Starbucks" min="1" value="1">
+            <button onclick="addToCart('Starbucks', 10)">Add to Cart</button>
+            <button class="favorite-btn" data-item="Starbucks" onclick="toggleFavorite('Starbucks')">🤍</button>
+        </div>
+        <div class="menu-item">
+            <h4>Vodka - $3</h4>
+            <img src="image/vodka.jpeg" alt="Vodka">
+            <input type="number" id="quantity-Vodka" min="1" value="1">
+            <button onclick="addToCart('Vodka', 10)">Add to Cart</button>
+            <button class="favorite-btn" data-item="Vodka" onclick="toggleFavorite('Vodka')">🤍</button>
+        </div>
+    </div>
+</section>
+
+<!-- Customer Comments Section -->
+<section id="comments">
+    <h2>Customer Feedback</h2>
+    <p>We would love to hear your thoughts! Leave a comment below:</p>
+    <form id="comment-form">
+        <input type="text" id="customer-name" placeholder="Your Name" required><br>
+        <textarea id="customer-comment" placeholder="Your Comment" required></textarea><br>
+        <button type="submit">Submit Comment</button>
+    </form>
+
+    <h3>What Our Customers Are Saying</h3>
+    <div id="customer-opinions">
+        <!-- Opinions will be displayed here -->
+    </div>
+    <div id="comments-container">
+        <h2>Customer Reviews</h2>
+        
+        <div id="comments-section"></div> <!-- Comments appear here -->
+    
+        <h3>Add a Comment</h3>
+        <input type="text" id="comment-name" placeholder="Your Name">
+        <textarea id="comment-message" placeholder="Your Comment"></textarea>
+        <button onclick="addComment()">Submit</button>
+    </div>    
+</section>
+
+
+<!-- Shopping Cart Section -->
+<section id="cart">
+    <h2>Your Cart</h2>
+    <div class="cart" id="cart-items"></div>
+    <h3>Total: $<span id="total-price">0</span></h3>
+    
+    <!-- Discount Input -->
+    <input type="text" id="discount-code" placeholder="Enter discount code">
+    <button onclick="applyDiscount()">Apply Discount</button>
+    <p id="discount-message"></p>
+
+    <!-- Checkout Button -->
+    <button onclick="checkout()">Proceed to Payment</button>
+</section>
+
+<!-- Payment Section -->
+<section id="payment">
+    <h2>Payment Details</h2>
+    <p>Total Amount: $<span id="final-price"></span></p>
+    <label>Card Number:</label>
+    <input type="text" id="cardNumber">
+    <button onclick="confirmPayment()">Pay Now</button>
+</section>
+
+<!--About us-->
+<section id="about">
+    <h2>About Us</h2>
+    <p>Welcome to <strong>[Your Restaurant Name]</strong>, where we serve delicious, freshly prepared meals made with love. 🍽️❤️</p>
+    <p>Our chefs craft each dish using high-quality ingredients to ensure a delightful dining experience. 🌿👨‍🍳</p>
+    <p>With a cozy atmosphere and excellent customer service, we aim to make every visit special. ✨</p>
+    <p>Join us today and enjoy mouthwatering flavors that will keep you coming back for more! 🍕🥗🍛</p>
+</section>
+<!--contact us is here-->
+<section id="contact" class="us">
+    <h2>Contact</h2>
+    <p>Contact us for any inquiries or support.</p>
+    <p>Email: <a href="mailto:cubeyd036@gmail.com"target="_blank">cubeyd036@gmail.com</a></p>
+    <p>Facebook: <a href="https://www.facebook.com/CubaydAadanXasan" target="_blank">Cubayd Aadan Xasan</a></p>
+    <p>Instagram: <a href="https://www.instagram.com/" target="_blank">Instagram Profile</a></p>
+    <h3>Send Us a Message</h3>
+    <form action="mailto:cubeyd036@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required><br>
+        <input type="email" name="email" placeholder="Your Email" required><br>
+        <textarea name="message" placeholder="Your Message" required></textarea><br>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<!--FAQ part function is here-->
+<section id="faq" class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+        <p class="faq-question" onclick="toggleFAQ(this)">❓ How do I place an order?</p>
+        <p class="faq-answer">You can place an order by adding items to your cart and proceeding to checkout.</p>
+    </div>
+    <div class="faq-item">
+        <p class="faq-question" onclick="toggleFAQ(this)">❓ What payment methods do you accept?</p>
+        <p class="faq-answer">We accept credit/debit cards and online payments.</p>
+    </div>
+    <div class="faq-item">
+        <p class="faq-question" onclick="toggleFAQ(this)">❓ Can I modify my order after placing it?</p>
+        <p class="faq-answer">Once an order is placed, modifications are not guaranteed. Please contact support for assistance.</p>
+    </div>
+</section>
+
+<!--Gallery part is here-->
+<section id="gallery" class="gallery">
+    <h2>Food & Drinks Gallery</h2>
+    <img src="image/Delicious Food.jpeg" alt="Delicious Food">
+    <img src="image/Tasty Meal.jpeg" alt="Tasty Meal">
+    <img src="image/Refreshing Drink.jpeg" alt="Refreshing Drink">
+    <img src="image/Cold Beverage.jpeg" alt="Cold Beverage">
+</section>
+
+<!-- Link to external JavaScript file -->
+<script src="payment.js"></script>
+
+<!-- Footer Section -->
+<footer>
+    <p>&copy; 2024 Our Restaurant</p>
+</footer>
+
+<!--javascript for FAQ answer -->
+<script>
+    function toggleFAQ(element) {
+        let answer = element.nextElementSibling;
+        answer.style.display = answer.style.display === "block" ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>
